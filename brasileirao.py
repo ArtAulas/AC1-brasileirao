@@ -441,7 +441,15 @@ Consulte a zona de rebaixamento do dicionário de dados, nao deixe
 ela chumbada da função
 '''
 def rebaixados(dados):
-    pass
+    rebaixa=[]
+    faixa=dados['fases']['2700']['faixas-classificacao']['classifica3']['faixa']
+    faixa1=int(faixa.split('-')[0])
+    faixa2=int(faixa.split('-')[1])
+    classificacao=dados['fases']['2700']['classificacao']['grupo']['Único']
+
+    rebaixa=classificacao[faixa1-1:faixa2]
+
+    return rebaixa
 
 '''
 A proxima função recebe (alem do dicionario de dados do brasileirao) uma id de time
@@ -451,7 +459,13 @@ Ela retorna a classificacao desse time no campeonato.
 Se a id nao for valida, ela retorna a string 'nao encontrado'
 '''
 def classificacao_do_time_por_id(dados,time_id):
-    pass
+    classificacoes=dados['fases']['2700']['classificacao']['grupo']['Único']
+    i=0
+    for id in classificacoes:
+        i+=1
+        if id==time_id:
+            return i
+    return 'nao encontrado'
 
 
 import unittest
