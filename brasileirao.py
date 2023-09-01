@@ -164,11 +164,11 @@ A funcao so recebe o dicionario de dados do brasileirao
 
 '''
 def classificados_libertadores(dados):
-    faixa=dados['fases']['2700']['faixas-classificacao']['classifica1']['faixa']#string com faixa de classificação
-    faixa=int(faixa.split('-')[1])#nr de times classificados
-    classificacoes=dados['fases']['2700']['classificacao']['grupo']['Único']#lista com classificações de times em ordem
+    faixa=dados['fases']['2700']['faixas-classificacao']['classifica1']['faixa']
+    faixa=int(faixa.split('-')[1])
+    classificacoes=dados['fases']['2700']['classificacao']['grupo']['Único']
 
-    ids_libertadores=[]#lista vazia a ser preenchida com ids de classificados para libertadores
+    ids_libertadores=[]
     for id in classificacoes:
         ids_libertadores.append(id)
         if len(ids_libertadores)==faixa:
@@ -240,8 +240,6 @@ def nomes_dos_times_de_um_jogo(dados,id_jogo):
 
     return nomet1, nomet2
 
-#nomes_dos_times_de_um_jogo(dados2018, '102094')
-
 '''
 Façamos agora a busca "ao contrário". Conhecendo
 o nome-comum de um time, queremos saber sua id.
@@ -253,9 +251,7 @@ def id_do_time(dados,nome_time):
         if dados['equipes'][id]['nome-comum']==nome_time:
             return id
     return 'nao encontrado'
-    
 
-#id_do_time(dados2018, 'Cruzeiro')
 
 '''
 Crie uma funcao datas_de_jogo, que procura nos dados do brasileirao 
@@ -289,8 +285,6 @@ def data_de_um_jogo(dados,id_jogo):
                 return dia
     return 'nao encontrado'
 
-#data_de_um_jogo(dados2018, '102099')
-
 '''
 A proxima funcao recebe apenas o dicionario dos dados do brasileirao
 
@@ -311,7 +305,6 @@ def dicionario_id_estadio_e_nro_jogos(dados):
             estadios[id_estadio]+=1
     return estadios
 
-#dicionario_id_estadio_e_nro_jogos(dados2018)
 
 '''
 Agora, façamos uma busca "fuzzy". Queremos procurar por 'Fla'
@@ -340,8 +333,6 @@ def busca_imprecisa_por_nome_de_time(dados,nome_time):
         elif nome_time in equipes[id]['sigla']:
             list_ids.append(id)
     return list_ids
-
-#busca_imprecisa_por_nome_de_time(dados2018, 'Paulo')
 
 #ids dos jogos de um time
 
@@ -412,7 +403,7 @@ def dicionario_de_gols(dados):
             gols[t2]+=int(jogos[id_jogos]['placar2'])
     return gols
 
-#dicionario_de_gols(dados2018)
+
 
 '''
 A proxima funcao recebe apenas o dicionario dos dados do brasileirao
@@ -429,7 +420,7 @@ def time_que_fez_mais_gols(dados):
 
     return id_maior
 
-#time_que_fez_mais_gols(dados2018)
+
 '''
 Da mesma forma que podemos obter a informacao dos times classificados
 para a libertadores, também podemos obter os times na zona de rebaixamento
